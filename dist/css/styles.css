@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.board {
+    border: solid 1px black;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 462px;
+    max-height: 500px;
+}
+
+.grid {
+    border: solid 1px black;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+}

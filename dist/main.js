@@ -1,0 +1,1 @@
+(()=>{"use strict";!function(){const e=document.getElementById("board-one"),t=document.getElementById("board-two");for(let t=0;t<121;t++){const t=document.createElement("div");t.classList="grid",e.append(t)}for(let e=0;e<121;e++){const e=document.createElement("div");e.classList="grid",t.append(e)}}()})();
