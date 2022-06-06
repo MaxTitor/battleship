@@ -39,7 +39,7 @@ function createPlayer() {
                         ship.coords.forEach(coords => {
                             const inputCoords = coord.join('')
                             const shipCoords = coords.join('')
-                            if (shipCoords.includes(inputCoords) === true) {
+                            if (inputCoords === shipCoords) {
                                 illegalMove = true
                             }
                         })
@@ -52,7 +52,7 @@ function createPlayer() {
                 const illegalMove = this.illegalMove(placeCoords);
                 
                 if (illegalMove === true) {
-                    console.log('illegal move');
+                    console.log(placeCoords);
                 } else {
                     gameboard.place(ship, placeCoords)
                     ship.isPlaced = true
@@ -64,7 +64,7 @@ function createPlayer() {
                 const illegalMove = this.illegalMove(moveCoords)
 
                 if (illegalMove === true) {
-                    console.log('illegal move');
+                    console.log(moveCoords);
                 } else {
                     placedShips.forEach(shipWithCoords => {
                         if (shipWithCoords.ship === ship) {
