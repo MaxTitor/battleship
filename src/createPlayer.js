@@ -5,14 +5,14 @@ function createPlayer() {
 
     class Player {
         constructor() {
-            this.placeShip = (ship, direction, initCoords) => {
+            this.coords = (ship, direction, initCoords) => {
                 let coords = [initCoords];
                 let letter = initCoords[0];
                 let num = initCoords[1];
 
                 if (direction === 'horizontal') {
                     for (let index = 1; index < ship.length; index++) {
-                        num = num + index;
+                        num++;
                         let nextCoords = [letter, num];
                         coords.push(nextCoords);
                     }
@@ -25,7 +25,54 @@ function createPlayer() {
                         coords.push(nextCoords);
                     }
                 }
-                gameboard.place(ship, coords)
+                return coords
+            },
+            this.illegalMove = (placeCoords) => {  
+                const placedShips = gameboard.placedShips
+                let illegalMove = false
+                placeCoords.forEach(coord => {
+                    if (coord.includes(11) || coord.includes(undefined)) {
+                        illegalMove = true
+                    }
+
+                    placedShips.forEach(ship => {
+                        ship.coords.forEach(coords => {
+                            const inputCoords = coord.join('')
+                            const shipCoords = coords.join('')
+                            if (shipCoords.includes(inputCoords) === true) {
+                                illegalMove = true
+                            }
+                        })
+                    })
+                })
+                return illegalMove
+            },
+            this.placeShip = (ship, direction, initCoords) => {
+                const placeCoords = this.coords(ship, direction, initCoords)
+                const illegalMove = this.illegalMove(placeCoords);
+                
+                if (illegalMove === true) {
+                    console.log('illegal move');
+                } else {
+                    gameboard.place(ship, placeCoords)
+                    ship.isPlaced = true
+                }
+            },
+            this.moveShip = (ship, direction, initCoords) => {
+                const moveCoords = this.coords(ship, direction, initCoords)
+                const placedShips = gameboard.placedShips
+                const illegalMove = this.illegalMove(moveCoords)
+
+                if (illegalMove === true) {
+                    console.log('illegal move');
+                } else {
+                    placedShips.forEach(shipWithCoords => {
+                        if (shipWithCoords.ship === ship) {
+                            shipWithCoords.coords = moveCoords;
+                        }
+                    })
+                }
+                
             },
             this.attack = (coords) => {
                 gameboard.recieveAttack(coords)

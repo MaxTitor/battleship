@@ -7,8 +7,8 @@
     border: solid 1px black;
     display: flex;
     flex-wrap: wrap;
-    max-width: 462px;
-    max-height: 500px;
+    max-width: 420px;
+    max-height: 420px;
 }
 
 .grid {
@@ -17,4 +17,20 @@
     height: 40px;
     margin: 0;
     padding: 0;
+}
+
+.hover {
+    background-color: lightgray;
+}
+
+.ship {
+    background-color: grey;
+}
+
+.attacked {
+    background-color: yellow;
+}
+
+.hit {
+    background-color: red;
 }

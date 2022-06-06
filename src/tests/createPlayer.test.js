@@ -1,6 +1,5 @@
 const createPlayer = require('../createPlayer')
 const createShip = require('../createShip')
-// const createGameboard = require('../createGameboard')
 
 const carrier = createShip(5);
 const battleship = createShip(4);
