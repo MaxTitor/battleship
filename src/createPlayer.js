@@ -53,6 +53,8 @@ function createPlayer() {
                 
                 if (illegalMove === true) {
                     console.log(placeCoords);
+                    console.log('illegal move');
+                    return 'illegal move'
                 } else {
                     gameboard.place(ship, placeCoords)
                     ship.isPlaced = true
@@ -65,6 +67,7 @@ function createPlayer() {
 
                 if (illegalMove === true) {
                     console.log(moveCoords);
+                    console.log('illegal move');
                 } else {
                     placedShips.forEach(shipWithCoords => {
                         if (shipWithCoords.ship === ship) {
