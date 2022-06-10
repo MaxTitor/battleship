@@ -1,10 +1,9 @@
-import player from "./player"
+import cpu from "./cpu"
+const cpuBoard = cpu(true)
+const attackedPositions = cpuBoard.attackedPositions
+const placedShips = cpuBoard.placedShips
 
-const playerBoard = player.returnBoard();
-const placedShips = playerBoard.placedShips;
-const attackedPositions = playerBoard.attackedPositions
-
-function updatePlayerBoard() {
+function updateCpuBoard() {
     let num = 0
     let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
     
@@ -17,28 +16,9 @@ function updatePlayerBoard() {
         let letter = letters[Math.floor(index / 10)];
         let grid = letter + num
     
-        document.querySelector("#board-one > div.grid." + grid).classList.remove('ship')
+        document.querySelector("#board-two > div.grid." + grid).classList.remove('attacked')
+        document.querySelector("#board-two > div.grid." + grid).classList.remove('hit')
     }
-    placedShips.forEach(shipWithCoords => {
-        shipWithCoords.coords.forEach(coords => {
-            const coordsString = coords.join('')
-            let num = 0
-
-            for (let index = 0; index < 100; index++) {
-                num++;
-                if (num > 10) {
-                    num = 1;
-                }
-                
-                let letter = letters[Math.floor(index / 10)];
-                let grid = letter + num
-            
-                if (coordsString === grid) {
-                    document.querySelector("#board-one > div.grid." + grid).classList.add('ship')
-                }
-            }
-        })
-    })
 
     attackedPositions.forEach(attackedPosition => {
         const attackedString = attackedPosition.join('')
@@ -54,7 +34,7 @@ function updatePlayerBoard() {
             let grid = letter + num
         
             if (attackedString === grid) {
-                document.querySelector("#board-one > div.grid." + grid).classList.add('attacked')
+                document.querySelector("#board-two > div.grid." + grid).classList.add('attacked')
             }
         }
     })
@@ -74,11 +54,11 @@ function updatePlayerBoard() {
                 let grid = letter + num
             
                 if (hitString === grid) {
-                    document.querySelector("#board-one > div.grid." + grid).classList.add('hit')
+                    document.querySelector("#board-two > div.grid." + grid).classList.add('hit')
                 }
             }
         })
     })
 }
 
-export default updatePlayerBoard
+export default updateCpuBoard

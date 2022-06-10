@@ -34,3 +34,8 @@
 .hit {
     background-color: red;
 }
+
+#announcer {
+    text-align: center;
+    font-size: 4rem;
+}

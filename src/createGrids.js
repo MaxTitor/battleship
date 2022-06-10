@@ -1,4 +1,6 @@
 import selectShip from "./selectShip";
+import attackShip from "./attackShip";
+import gameLoop from ".";
 
 function createGrids() {
     const boardOne = document.getElementById('board-one');
@@ -16,7 +18,7 @@ function createGrids() {
         let coords = letter + num;
         grid.classList.add('grid', coords);
         grid.addEventListener('click', () => {
-            selectShip(coords);
+            gameLoop(true, coords, 'playerBoard')
         })
         grid.addEventListener('mouseover', () => {
             grid.classList.add('hover')
@@ -37,7 +39,7 @@ function createGrids() {
         let coords = letter + num;
         grid.classList.add('grid', coords);
         grid.addEventListener('click', () => {
-            // alert(coords + ' has been clicked')
+            gameLoop(true, coords, 'cpuBoard')
         })
         boardTwo.append(grid);
     }

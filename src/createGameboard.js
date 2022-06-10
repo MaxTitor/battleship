@@ -12,6 +12,16 @@ function createGameboard() {
             this.attackedPositions = [],
             this.recieveAttack = (coords) => {
                 this.attackedPositions.push(coords)
+                this.placedShips.forEach(shipWithCoords => {
+                    shipWithCoords.coords.forEach(coord => {
+                        const shipCoords = coord.join('')
+                        const inputCoords = coords.join('')
+                        if (shipCoords === inputCoords) {
+                            shipWithCoords.ship.hit(coords)
+                            console.log(shipWithCoords.ship.hitPositions);
+                        }
+                    })
+                })
             },
             this.didPlayerLose = () => {
                 let sunkShips = 0
