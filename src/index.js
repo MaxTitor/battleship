@@ -18,9 +18,6 @@ function gameLoop(userClicked, coords, board) {
 
     if (userClicked === true && gameStarted === true && board === 'cpuBoard') {
         attackShip(coords)
-        if (cpuBoard.attackedPositions.length === cpuBoard.attackedPositions.length) {
-            console.log('illegal move');
-        }
         gameLoop(false)
     } else if (gameStarted === true && userClicked === false) {
         cpu()

@@ -1,5 +1,3 @@
-import selectShip from "./selectShip";
-import attackShip from "./attackShip";
 import gameLoop from ".";
 
 function createGrids() {
@@ -39,7 +37,9 @@ function createGrids() {
         let coords = letter + num;
         grid.classList.add('grid', coords);
         grid.addEventListener('click', () => {
-            gameLoop(true, coords, 'cpuBoard')
+            if (grid.classList.contains('attacked') === false && grid.classList.contains('hit') === false) {
+                gameLoop(true, coords, 'cpuBoard')
+            }
         })
         boardTwo.append(grid);
     }
