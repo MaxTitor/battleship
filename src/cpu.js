@@ -36,6 +36,7 @@ function cpuPlace() {
     shipsPlaced = true
 }
 
+let playerAttackedMerged = []
 function cpuAttack() {
     const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 
@@ -46,18 +47,9 @@ function cpuAttack() {
         const coords = [letter, number]
         let isIllegal = true
 
-        attackedPositions.forEach(position => {
-            const attackedString = position.join('')
-            const coordsString = coords.join('')
+        const coordsString = coords.join('')
 
-            if (attackedString === coordsString) {
-                isIllegal = true
-            } else {
-                isIllegal = false
-            }
-        })
-
-        if (attackedPositions.length === 0) {
+        if (playerAttackedMerged.includes(coordsString) === false || attackedPositions.length === 0) {
             isIllegal = false
         }
 
@@ -65,6 +57,8 @@ function cpuAttack() {
             playerGameBoard.recieveAttack(coords)
             illegalMove = false
         }
+
+        playerAttackedMerged.push(coordsString)
     }
 }
 
