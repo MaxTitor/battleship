@@ -6,6 +6,7 @@ import attackShip from './attackShip';
 const playerBoard = player.returnBoard()
 const cpuBoard = cpu(true)
 const startBtn = document.getElementById('start-btn')
+const resetBtn = document.getElementById('reset-btn')
 let announcer = document.getElementById('announcer')
 
 createGrids()
@@ -49,6 +50,7 @@ function gameLoop(userClicked, coords, board) {
                 announcer.innerHTML = 'Player won!'
             }, 2000);
         }
+        
     }
 }
 
@@ -57,11 +59,23 @@ startBtn.addEventListener('click', () => {
         gameLoop()
         gameStarted = true
         announcer.innerHTML = 'Game started'
+        document.getElementById('horizontal-btn').classList.add('clicked')
+        document.getElementById('vertical-btn').classList.add('clicked')
+        document.getElementById('carrier-btn').classList.add('clicked')
+        document.getElementById('battleship-btn').classList.add('clicked')
+        document.getElementById('cruiser-btn').classList.add('clicked')
+        document.getElementById('submarine-btn').classList.add('clicked')
+        document.getElementById('destroyer-btn').classList.add('clicked')
+        document.getElementById('start-btn').classList.add('clicked')
     } else if (playerBoard.placedShips.length === 5 && gameStarted === true) {
         announcer.innerHTML = 'Game already started'
     } else {
         announcer.innerHTML = 'Ships are not placed'
     }
+})
+
+resetBtn.addEventListener('click', () => {
+    location.reload()
 })
 
 export default gameLoop

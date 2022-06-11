@@ -1,10 +1,72 @@
+html, body, h1, h2, h3, h4, h5, h6, p, div {
+    font-family: 'Anonymous Pro', monospace;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+}
+
+h1, p {
+    color: #00FF9F;
+}
+
+.glowing-announcer {
+    color: white;
+    margin: 2%;
+    font-size: 5vw;
+    text-shadow: 0 0 10px #7bffcd, 0 0 20px #9dffd9, 0 0 30px #00FF9F, 0 0 40px #00ff9ddc, 0 0 50px #00e18b, 0 0 60px #00d986, 0 0 70px #00df89;
+}
+
+button {
+    background-color: black;
+    border: 2px solid #00B8FF;
+    color: #00B8FF;
+    font-size: 1rem;
+    padding: 0.9%;
+    margin: 5px 0;
+}
+
+button:hover {
+    color: #5dd1ff;
+}
+
+.clicked {
+    border: 2px solid #678b99;
+    color: #7197a7;
+}
+
+.clicked:hover {
+    border: 2px solid #96c8dc;
+    color: #92c4d9;
+}
+
 .container {
     display: flex;
     justify-content: space-between;
+    margin: 0 2%;
+}
+
+.container-2 {
+    margin: 1% 0;
+    text-align: center;
+}
+
+@media screen and (max-width: 878px){
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin: 0 2%;
+    }
+
+    .board {
+        margin: 2% auto;
+    }
 }
 
 .board {
-    border: solid 1px black;
+    border: solid 1px #00B8FF;
     display: flex;
     flex-wrap: wrap;
     max-width: 420px;
@@ -12,7 +74,7 @@
 }
 
 .grid {
-    border: solid 1px black;
+    border: solid 1px #00B8FF;
     width: 40px;
     height: 40px;
     margin: 0;
@@ -24,7 +86,7 @@
 }
 
 .ship {
-    background-color: grey;
+    background-color: white;
 }
 
 .attacked {

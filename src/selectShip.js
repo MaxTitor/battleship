@@ -15,31 +15,86 @@ let direction = 'horizontal';
 
 horizontalBtn.addEventListener('click', () => {
     direction = 'horizontal';
+    directionBtn()
 })
 
 verticalBtn.addEventListener('click', () => {
     direction = 'vertical';
+    directionBtn()
 })
 
 carrierBtn.addEventListener('click', () => {
     selectedShip = 'carrier';
+    selectedBtn()
 })
 
 battleshipBtn.addEventListener('click', () => {
     selectedShip = 'battleship';
+    selectedBtn()
 })
 
 cruiserBtn.addEventListener('click', () => {
     selectedShip = 'cruiser';
+    selectedBtn()
 })
 
 submarineBtn.addEventListener('click', () => {
     selectedShip = 'submarine';
+    selectedBtn()
 })
 
 destroyerBtn.addEventListener('click', () => {
     selectedShip = 'destroyer';
+    selectedBtn()
 })
+
+function directionBtn() {
+    if (direction === 'horizontal') {
+        horizontalBtn.classList.add('clicked')
+        verticalBtn.classList.remove('clicked')
+    } else if (direction === 'vertical') {
+        horizontalBtn.classList.remove('clicked')
+        verticalBtn.classList.add('clicked')
+    }
+}
+
+directionBtn()
+
+function selectedBtn() {
+    if (selectedShip === 'carrier') {
+        carrierBtn.classList.add('clicked')
+        battleshipBtn.classList.remove('clicked')
+        cruiserBtn.classList.remove('clicked')
+        submarineBtn.classList.remove('clicked')
+        destroyerBtn.classList.remove('clicked')
+    } else if (selectedShip ==='battleship') {
+        carrierBtn.classList.remove('clicked')
+        battleshipBtn.classList.add('clicked')
+        cruiserBtn.classList.remove('clicked')
+        submarineBtn.classList.remove('clicked')
+        destroyerBtn.classList.remove('clicked')
+    } else if (selectedShip === 'cruiser') {
+        carrierBtn.classList.remove('clicked')
+        battleshipBtn.classList.remove('clicked')
+        cruiserBtn.classList.add('clicked')
+        submarineBtn.classList.remove('clicked')
+        destroyerBtn.classList.remove('clicked')
+    } else if (selectedShip === 'submarine') {
+        carrierBtn.classList.remove('clicked')
+        battleshipBtn.classList.remove('clicked')
+        cruiserBtn.classList.remove('clicked')
+        submarineBtn.classList.add('clicked')
+        destroyerBtn.classList.remove('clicked')
+    } else if (selectedShip === 'destroyer') {
+        carrierBtn.classList.remove('clicked')
+        battleshipBtn.classList.remove('clicked')
+        cruiserBtn.classList.remove('clicked')
+        submarineBtn.classList.remove('clicked')
+        destroyerBtn.classList.add('clicked')
+    }
+}
+
+selectedBtn()
 
 function getCoords(coordsString) {
     let coords = coordsString.split('')
